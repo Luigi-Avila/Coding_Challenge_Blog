@@ -18,10 +18,12 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.luigidev.linkthread.features.home.ui.HomeViewModel
+import com.luigidev.linkthread.navigation.Routes
 
 @Composable
-fun HomeSuccessScreen(homeViewModel: HomeViewModel) {
+fun HomeSuccessScreen(homeViewModel: HomeViewModel, navController: NavHostController) {
     val listState = rememberLazyListState()
     val fabExpanded by remember {
         derivedStateOf {
@@ -35,7 +37,7 @@ fun HomeSuccessScreen(homeViewModel: HomeViewModel) {
                 text = { Text(text = "Add choir") },
                 expanded = fabExpanded,
                 icon = { Icon(imageVector = Icons.Filled.Add, contentDescription = "Add post") },
-                onClick = { /*TODO*/ }
+                onClick = { navController.navigate(Routes.PostScreen.route) }
             )
         },
         floatingActionButtonPosition = FabPosition.End

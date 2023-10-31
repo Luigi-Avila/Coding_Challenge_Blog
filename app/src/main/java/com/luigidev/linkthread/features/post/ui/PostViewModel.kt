@@ -1,6 +1,5 @@
 package com.luigidev.linkthread.features.post.ui
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -33,7 +32,6 @@ class PostViewModel: ViewModel() {
     }
 
     fun sendPost(){
-        Log.i("VIEWMODEL", "Upload to Firebase")
         val post = Post(title = title, author = "Luigi", dateTime = Calendar.getInstance().time.toString(), content = content)
         postUIState = PostUIState.Loading
         savePostUseCase(post){ result ->
@@ -45,5 +43,10 @@ class PostViewModel: ViewModel() {
 
     }
 
+    fun resetPost(){
+        postUIState = PostUIState.FillOut
+        title = ""
+        content = ""
+    }
 
 }

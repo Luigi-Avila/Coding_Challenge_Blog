@@ -71,6 +71,9 @@ dependencies {
     //Navigation
     implementation(libs.compose.navigation)
 
+    //Lottie
+    implementation(libs.compose.lottie)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
