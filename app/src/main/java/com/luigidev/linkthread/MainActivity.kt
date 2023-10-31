@@ -8,13 +8,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.luigidev.linkthread.features.home.ui.HomeScreen
 import com.luigidev.linkthread.features.home.ui.HomeViewModel
+import com.luigidev.linkthread.features.post.ui.PostViewModel
+import com.luigidev.linkthread.navigation.SetupNavGraph
 import com.luigidev.linkthread.ui.theme.LinkThreadTheme
 
 class MainActivity : ComponentActivity() {
 
-//    private val postViewModel: PostViewModel by viewModels()
+    private val postViewModel: PostViewModel by viewModels()
 
     private val homeViewModel: HomeViewModel by viewModels()
 
@@ -28,7 +31,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 //                   PostScreen(postViewModel)
-                    HomeScreen(homeViewModel)
+//                    HomeScreen(homeViewModel)
+                    val navigationController = rememberNavController()
+                    SetupNavGraph(navController = navigationController, homeViewModel, postViewModel)
                 }
             }
         }
