@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.luigidev.linkthread.core.ResultAPI
-import com.luigidev.linkthread.features.post.domain.models.Post
+import com.luigidev.linkthread.core.models.Post
 import com.luigidev.linkthread.features.post.domain.states.PostUIState
 import com.luigidev.linkthread.features.post.domain.usecase.SavePostUseCase
 import java.util.Calendar

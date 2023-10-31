@@ -3,7 +3,7 @@ package com.luigidev.linkthread.features.post.data.network
 import com.google.firebase.firestore.FirebaseFirestore
 import com.luigidev.linkthread.core.FirebaseCollections
 import com.luigidev.linkthread.core.ResultAPI
-import com.luigidev.linkthread.features.post.domain.models.Post
+import com.luigidev.linkthread.core.models.Post
 
 class PostClient {
 

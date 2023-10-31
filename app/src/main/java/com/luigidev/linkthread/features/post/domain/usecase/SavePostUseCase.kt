@@ -2,7 +2,7 @@ package com.luigidev.linkthread.features.post.domain.usecase
 
 import com.luigidev.linkthread.core.ResultAPI
 import com.luigidev.linkthread.features.post.data.PostRepositoryImp
-import com.luigidev.linkthread.features.post.domain.models.Post
+import com.luigidev.linkthread.core.models.Post
 
 class SavePostUseCase {
 
