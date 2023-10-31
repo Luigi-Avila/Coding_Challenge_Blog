@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60576303242",
+    "project_id": "linkthread",
+    "storage_bucket": "linkthread.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60576303242:android:f5595380bd391a56494573",
+        "android_client_info": {
+          "package_name": "com.luigidev.linkthread"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9vAt1t0D5KE70hv_pfm2_vCW3SSsduso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
