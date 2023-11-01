@@ -4,15 +4,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.luigidev.linkthread.core.FirebaseCollections
 import com.luigidev.linkthread.core.ResultAPI
 import com.luigidev.linkthread.core.models.Post
+import javax.inject.Inject
 
 
-class HomeClient {
-
-    private val db = FirebaseFirestore.getInstance()
-
+class HomeClient @Inject constructor(private val db: FirebaseFirestore) {
     fun getPosts(dataState: (ResultAPI<List<Post>>) -> Unit) {
         val reference = db.collection(FirebaseCollections.POSTS.toString())
-
         reference.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 dataState.invoke(ResultAPI.Success(task.result.documents.map {

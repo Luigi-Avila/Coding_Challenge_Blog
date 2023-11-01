@@ -4,10 +4,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.luigidev.linkthread.core.FirebaseCollections
 import com.luigidev.linkthread.core.ResultAPI
 import com.luigidev.linkthread.core.models.Post
+import javax.inject.Inject
 
-class PostClient {
-
-    private val db = FirebaseFirestore.getInstance()
+class PostClient @Inject constructor(private val db: FirebaseFirestore) {
 
     fun uploadPost(post: Post, uploadState: (ResultAPI<String>) -> Unit) {
         val reference = db.collection(FirebaseCollections.POSTS.toString())

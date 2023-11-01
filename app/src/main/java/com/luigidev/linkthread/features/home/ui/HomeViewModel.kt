@@ -9,16 +9,17 @@ import com.luigidev.linkthread.core.ResultAPI
 import com.luigidev.linkthread.core.models.Post
 import com.luigidev.linkthread.features.home.domain.states.HomeUIState
 import com.luigidev.linkthread.features.home.domain.usecase.GetPostsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
-
-class HomeViewModel: ViewModel() {
-
-    private val getPostsUseCase = GetPostsUseCase()
+@HiltViewModel
+class HomeViewModel @Inject constructor(private val getPostsUseCase: GetPostsUseCase) :
+    ViewModel() {
 
     internal var homeUIState: HomeUIState by mutableStateOf(HomeUIState.Loading)
         private set
@@ -28,7 +29,7 @@ class HomeViewModel: ViewModel() {
 
     private var _posts = MutableStateFlow(emptyList<Post>())
     val posts = searchText.combine(_posts) { text, posts ->
-        if (text.isBlank()){
+        if (text.isBlank()) {
             posts
         } else {
             posts.filter {
@@ -45,10 +46,10 @@ class HomeViewModel: ViewModel() {
         getPosts()
     }
 
-    private fun getPosts(){
+    private fun getPosts() {
         homeUIState = HomeUIState.Loading
-        getPostsUseCase{ result ->
-           homeUIState = when(result){
+        getPostsUseCase { result ->
+            homeUIState = when (result) {
                 is ResultAPI.Error -> HomeUIState.Error(result.message)
                 is ResultAPI.Success -> {
                     _posts.value = result.data
@@ -58,7 +59,7 @@ class HomeViewModel: ViewModel() {
         }
     }
 
-    fun onChangeSearchText(text: String){
+    fun onChangeSearchText(text: String) {
         _searchText.value = text
     }
 

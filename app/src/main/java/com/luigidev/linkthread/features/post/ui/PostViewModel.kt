@@ -8,11 +8,12 @@ import com.luigidev.linkthread.core.ResultAPI
 import com.luigidev.linkthread.core.models.Post
 import com.luigidev.linkthread.features.post.domain.states.PostUIState
 import com.luigidev.linkthread.features.post.domain.usecase.SavePostUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Calendar
+import javax.inject.Inject
 
-class PostViewModel: ViewModel() {
-
-    private val savePostUseCase = SavePostUseCase()
+@HiltViewModel
+class PostViewModel @Inject constructor(private val savePostUseCase: SavePostUseCase) : ViewModel() {
 
     internal var postUIState: PostUIState by mutableStateOf(PostUIState.FillOut)
         private set

@@ -4,10 +4,10 @@ import com.luigidev.linkthread.core.ResultAPI
 import com.luigidev.linkthread.features.post.data.network.PostClient
 import com.luigidev.linkthread.core.models.Post
 import com.luigidev.linkthread.features.post.domain.repository.IPostRepository
+import javax.inject.Inject
 
-class PostRepositoryImp : IPostRepository {
+class PostRepositoryImp @Inject constructor(private val client: PostClient) : IPostRepository {
 
-    private val client = PostClient()
     override fun savePost(
         post: Post,
         uploadState: (ResultAPI<String>) -> Unit
