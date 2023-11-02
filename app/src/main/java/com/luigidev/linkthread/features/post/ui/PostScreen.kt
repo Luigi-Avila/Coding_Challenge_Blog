@@ -1,14 +1,15 @@
 package com.luigidev.linkthread.features.post.ui
 
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.luigidev.linkthread.core.ErrorScreen
 import com.luigidev.linkthread.features.post.domain.states.PostUIState
 import com.luigidev.linkthread.features.post.ui.states.PostFillOutScreen
-import com.luigidev.linkthread.navigation.Routes
+import com.luigidev.linkthread.features.post.ui.states.PostSuccessScreen
 
 @Composable
 fun PostScreen(navController: NavHostController) {
@@ -17,26 +18,21 @@ fun PostScreen(navController: NavHostController) {
 
     when (postViewModel.postUIState) {
         is PostUIState.Error -> {
-            Text(text = "Error")
+            ErrorScreen()
         }
 
         PostUIState.FillOut -> {
-            PostFillOutScreen(postViewModel = postViewModel)
+            PostFillOutScreen(postViewModel = postViewModel, navController)
         }
 
         PostUIState.Loading -> {
-            Text(text = "Loading")
+            Box(contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
         }
 
         PostUIState.Success -> {
-            Row {
-                Button(onClick = { navController.navigate(Routes.HomeScreen.route) }) {
-                    Text(text = "Go to home")
-                }
-                Button(onClick = { postViewModel.resetPost() }) {
-                    Text(text = "Upload new")
-                }
-            }
+            PostSuccessScreen(navController, postViewModel)
         }
     }
 

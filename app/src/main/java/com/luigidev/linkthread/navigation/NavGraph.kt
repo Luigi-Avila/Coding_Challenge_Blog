@@ -1,5 +1,7 @@
 package com.luigidev.linkthread.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -8,6 +10,7 @@ import com.luigidev.linkthread.features.home.ui.HomeScreen
 import com.luigidev.linkthread.features.post.ui.PostScreen
 import com.luigidev.linkthread.features.splashscreen.SplashScreen
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Routes.SplashScreen.route) {

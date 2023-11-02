@@ -4,6 +4,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.luigidev.linkthread.core.FirebaseCollections
 import com.luigidev.linkthread.core.ResultAPI
 import com.luigidev.linkthread.core.models.Post
+import com.luigidev.linkthread.core.toDomain
 import javax.inject.Inject
 
 
@@ -13,7 +14,7 @@ class HomeClient @Inject constructor(private val db: FirebaseFirestore) {
         reference.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 dataState.invoke(ResultAPI.Success(task.result.documents.map {
-                    it.toObject(Post::class.java) ?: Post()
+                    it.toDomain()
                 }))
             } else {
                 dataState.invoke(ResultAPI.Error("Something went wrong"))
